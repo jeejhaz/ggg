@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Procurement Hub · Grab Merchant (Concept)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700;800&display=swap">
+<style>
+:root{--bg:#f2f4f3;--card:#fff;--tx:#14231b;--mu:#69776f;--bd:#e4e9e6;--g:#00b14f;--g2:#e3f7ec;--gd:#007a37;--o:#e8590c;--o2:#fff0e6;--y:#fff6d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1511;--card:#18221c;--tx:#e9f1ec;--mu:#92a39a;--bd:#27342d;--g:#2fd072;--g2:#12361f;--gd:#7be3a6;--o:#ff8f4d;--o2:#3a2314;--y:#3a3414}}
+:root[data-theme="dark"]{--bg:#0e1511;--card:#18221c;--tx:#e9f1ec;--mu:#92a39a;--bd:#27342d;--g:#2fd072;--g2:#12361f;--gd:#7be3a6;--o:#ff8f4d;--o2:#3a2314;--y:#3a3414}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Noto Sans Thai',system-ui,sans-serif;font-size:15px;line-height:1.5}
+#app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:88px;position:relative}
+.top{background:linear-gradient(160deg,#00b14f,#008c3f);color:#fff;padding:18px 18px 56px;border-radius:0 0 28px 28px}
+.top small{opacity:.85;font-size:11px;letter-spacing:.8px;font-weight:700}
+.top h1{margin:2px 0 2px;font-size:24px;font-weight:800}.top p{margin:0;opacity:.92;font-size:14px}
+.back{background:rgba(255,255,255,.2);border:0;color:#fff;border-radius:20px;padding:5px 12px;font:inherit;font-size:13px;margin-bottom:8px}
+.pad{padding:0 14px;margin-top:-40px}.pad.n{margin-top:14px}
+.card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,40,20,.07);border:1px solid var(--bd)}
+h2{font-size:16px;margin:0 0 8px;font-weight:700}
+.s{color:var(--mu);font-size:12.5px}
+.big{font-size:34px;font-weight:800;color:var(--g);line-height:1.1}
+.tag{display:inline-block;font-size:11px;border-radius:20px;padding:2px 9px;background:var(--y);color:#8a6d00;font-weight:700}
+.tag.g{background:var(--g2);color:var(--gd)}.tag.o{background:var(--o2);color:var(--o)}
+.bar{height:9px;background:var(--bg);border-radius:9px;overflow:hidden;margin:10px 0 4px}.bar i{display:block;height:100%;background:var(--g);border-radius:9px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.k{background:var(--bg);border-radius:14px;padding:10px 12px}.k small{display:block;color:var(--mu);font-size:11.5px}.k b{font-size:18px}
+.search{width:100%;border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:14px;padding:12px 14px;font:inherit;margin-bottom:10px}
+.it{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--bd);cursor:pointer}.it:first-of-type{border-top:0}
+.ic{width:46px;height:46px;border-radius:14px;background:var(--g2);display:grid;place-items:center;font-size:24px;flex:none}
+.it .l{flex:1}.it b{display:block}.it .r{text-align:right}
+.btn{display:block;width:100%;border:0;background:var(--g);color:#fff;border-radius:16px;padding:14px;font:inherit;font-weight:800;font-size:16px}
+.btn.o{background:var(--g2);color:var(--gd)}.btn:disabled{opacity:.5}
+.step{display:flex;align-items:center;justify-content:center;gap:18px;margin:6px 0 4px}
+.step button{width:42px;height:42px;border-radius:50%;border:1px solid var(--g);background:var(--card);color:var(--g);font-size:22px;font-weight:700}
+.step b{font-size:30px;min-width:96px;text-align:center}
+.sup{border:2px solid var(--bd);border-radius:18px;padding:14px;margin-bottom:10px;background:var(--card);cursor:pointer;position:relative}
+.sup.on{border-color:var(--g);background:var(--g2)}.sup.x{opacity:.6}
+.sup .h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.sup .p{font-size:26px;font-weight:800}
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.grid6 div{font-size:13px;font-weight:700}.grid6 small{display:block;color:var(--mu);font-weight:400;font-size:11px}
+.ln{display:flex;justify-content:space-between;padding:6px 0;font-size:14px}.ln.t{border-top:1px dashed var(--bd);margin-top:6px;padding-top:12px;font-weight:800;font-size:18px}
+.save{background:var(--g2);color:var(--gd);border-radius:14px;padding:12px;font-weight:700;text-align:center;margin:10px 0}
+.save.bad{background:var(--o2);color:var(--o)}
+.steps{display:flex;margin:12px 0 4px}.steps div{flex:1;text-align:center;font-size:11px;color:var(--mu)}
+.steps i{display:block;width:14px;height:14px;border-radius:50%;background:var(--bd);margin:0 auto 4px}.steps .d i{background:var(--g)}.steps .d{color:var(--tx);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:7px 3px;text-align:right;border-top:1px solid var(--bd)}th{color:var(--mu);font-weight:500;border-top:0}td:first-child,th:first-child{text-align:left}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.chips button{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:20px;padding:6px 13px;font:inherit;font-size:13px}.chips button.on{background:var(--g);color:#fff;border-color:var(--g)}
+label.f{display:block;font-size:12px;color:var(--mu)}label.f input{width:100%;margin-top:3px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:10px;padding:8px;font:inherit}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--card);border-top:1px solid var(--bd);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
+nav button{flex:1;border:0;background:none;color:var(--mu);font:inherit;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:1px}nav button span{font-size:21px}nav button.on{color:var(--g);font-weight:800}
+.toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:22px;font-size:14px;z-index:9}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<nav id="nav"></nav>
+<script>
+const F=(n,d=0)=>'฿'+(+n).toLocaleString('th-TH',{minimumFractionDigits:d,maximumFractionDigits:d});
+const $=s=>document.querySelector(s);
+// s: [ราคา/กก., ขั้นต่ำ(กก.), ค่าส่ง, ส่งฟรีเมื่อครบ, เวลาส่ง, เรตติ้ง, เครดิต]
+const I=[
+{id:'ck',n:'เนื้อไก่',e:'🍗',d:'ราคาจากผู้ขายหลายราย',q:10,last:[82,78],s:[[85,5,40,0,'พรุ่งนี้ 06:00',4.5,'เครดิต 7 วัน'],[78,10,60,0,'พรุ่งนี้ 08:00',4.8,'เครดิต 15 วัน'],[82,5,30,1000,'พรุ่งนี้ 07:00',4.2,'โอน/เงินสด']]},
+{id:'vg',n:'ผักสด',e:'🥬',d:'ค้นหาและเปรียบเทียบราคา',q:8,last:[34,35],s:[[35,5,40,0,'พรุ่งนี้ 05:30',4.4,'เครดิต 7 วัน'],[32,10,50,0,'พรุ่งนี้ 07:00',4.7,'เครดิต 15 วัน'],[34,3,30,600,'พรุ่งนี้ 06:00',4.3,'โอน/เงินสด']]},
+{id:'rc',n:'ข้าวสาร',e:'🌾',d:'ดูราคาขายส่ง',q:25,last:[37,36],s:[[38,10,60,0,'ภายใน 2 วัน',4.5,'เครดิต 7 วัน'],[36,25,80,0,'ภายใน 2 วัน',4.6,'เครดิต 15 วัน'],[37,10,40,700,'พรุ่งนี้ 10:00',4.3,'โอน/เงินสด']]}];
+const SN=['Supplier A','Supplier B','Supplier C'];
+const S={tab:'home',item:null,sel:null,q:{},ord:[],base:{n:8,sv:620},mi:0,
+menus:[{n:'กะเพราไก่ไข่ดาว',r:{ck:120,rc:200,vg:40},ot:8,pk:7,oh:14,cur:60},{n:'ข้าวมันไก่',r:{ck:150,rc:200,vg:30},ot:6,pk:7,oh:15,cur:65}],
+gp:30,promo:10,mg:20,wst:8,add:false};
+I.forEach(i=>S.q[i.id]=i.q);
+const tot=(i,k,q)=>{const s=i.s[k];return q*s[0]+(s[3]&&q*s[0]>=s[3]?0:s[2])};
+const ok=(i,k,q)=>q>=i.s[k][1];
+const best=(i,q)=>{let c=[0,1,2].filter(k=>ok(i,k,q));if(!c.length)c=[0,1,2];return c.reduce((a,k)=>tot(i,k,q)<tot(i,a,q)?k:a,c[0])};
+const unit=i=>{const q=i.q,k=best(i,q);return tot(i,k,q)/q};
+function go(t,it){S.tab=t;if(it){S.item=it;S.sel=best(I.find(x=>x.id==it),S.q[it])}draw()}
+function toast(t){const e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}
+const hdr=(a,t,sub,back)=>`<div class="top">${back?`<button class="back" onclick="go('${back}')">← กลับ</button>`:`<small>${a}</small>`}<h1>${t}</h1><p>${sub}</p></div>`;
+const NAV=[['home','🏠','หน้าหลัก'],['cmp','⚖️','เปรียบเทียบ'],['trk','📦','ติดตาม'],['tool','🧮','ต้นทุน/Grab']];
+function draw(){
+$('#nav').innerHTML=NAV.map(n=>`<button class="${(S.tab==n[0]||(S.tab=='sum'&&n[0]=='cmp'))?'on':''}" onclick="go('${n[0]}',${n[0]=='cmp'?"S.item||'ck'":'null'})"><span>${n[1]}</span>${n[2]}</button>`).join('');
+$('#app').innerHTML=V[S.tab]();window.scrollTo(0,0);
+if(S.tab=='home')filt('');if(S.tab=='tool')upT()}
+const V={
+home(){const pend=S.ord.reduce((a,o)=>a+o.sv,0),real=S.base.sv,goal=1500;
+return hdr('GRAB MERCHANT · CONCEPT','Procurement Hub','ซื้อวัตถุดิบคุ้มขึ้นสำหรับร้านของคุณ')+`<div class="pad">
+<div class="card"><div class="s">เป้าหมายการประหยัดเดือนนี้</div><div class="big">${F(goal)}</div>
+<div class="bar"><i style="width:${Math.min(100,(real+pend)/goal*100)}%"></i></div>
+<div class="two" style="margin-top:8px"><div class="k"><small>ประหยัดแล้ว <span class="tag g">จริง</span></small><b>${F(real)}</b></div><div class="k"><small>รอจัดส่ง <span class="tag">ประมาณการ</span></small><b>${F(pend)}</b></div></div>
+<p class="s" style="margin:8px 0 0">ตัวอย่างเป้าหมายใน Prototype ไม่ใช่ผลประหยัดจริง · ตัวเลข "จริง" นับเมื่อจัดส่งสำเร็จ</p></div>
+${festCard()}<input class="search" placeholder="🔍 ค้นหาวัตถุดิบ เช่น ไก่ ผัก ข้าว" oninput="filt(this.value)">
+<div class="card"><h2>รายการที่ซื้อบ่อย</h2><div id="list"></div></div></div>`},
+cmp(){const i=I.find(x=>x.id==(S.item||'ck')),q=S.q[i.id],b=best(i,q);
+return hdr('COMPARE PRICES',i.n,'เปรียบเทียบราคาต่อกิโลกรัม',null)+`<div class="pad"><div class="card" style="text-align:center"><div class="s">จำนวนที่ต้องการสั่ง</div><div class="step"><button onclick="qty(-1)">−</button><b>${q} กก.</b><button onclick="qty(1)">+</button></div><div class="s">ระบบคำนวณยอดจ่ายรวมให้ตามจำนวนนี้ ไม่ใช่แค่ดูราคาต่อกิโล</div></div>
+${i.s.map((s,k)=>{const o=ok(i,k,q);return `<div class="sup ${S.sel==k?'on':''} ${o?'':'x'}" onclick="S.sel=${k};draw()"><div class="h"><div><b>${SN[k]}</b><div class="s">${s[4]}</div></div><div style="text-align:right">${k==b?'<span class="tag g">จ่ายรวมถูกสุด</span>':''}${o?'':`<span class="tag o">ขั้นต่ำ ${s[1]} กก.</span>`}</div></div>
+<div class="p">${F(s[0])}<span class="s">/กก.</span></div>
+<div class="grid6"><div>${s[1]} กก.<small>สั่งขั้นต่ำ</small></div><div>${s[3]&&s[0]*q>=s[3]?'ฟรี':F(s[2])}<small>${s[3]?'ฟรีเมื่อครบ '+F(s[3]):'ค่าจัดส่ง'}</small></div><div style="color:var(--g)">${F(tot(i,k,q))}<small>ยอดจ่ายรวม</small></div><div>⭐ ${s[5]}<small>เรตติ้ง</small></div><div>${s[6]}<small>เงื่อนไขชำระ</small></div><div>${s[4].split(' ')[0]}<small>กำหนดส่ง</small></div></div></div>`}).join('')}
+<button class="btn" onclick="go('sum')" ${ok(i,S.sel,q)?'':'disabled'}>${ok(i,S.sel,q)?'สรุปคำสั่งซื้อ →':'จำนวนต่ำกว่าขั้นต่ำของผู้ขาย'}</button></div>`},
+sum(){const i=I.find(x=>x.id==S.item),q=S.q[i.id],k=S.sel,s=i.s[k],mat=q*s[0],fee=tot(i,k,q)-mat,t=mat+fee,base=tot(i,0,q),sv=base-t,d=new Date();d.setDate(d.getDate()+1);
+return hdr('ORDER SUMMARY','สรุปคำสั่งซื้อ','ตรวจสอบก่อนกดยืนยัน','cmp')+`<div class="pad"><div class="card"><div class="ln"><div><b>${i.n} ${q} กก.</b><div class="s">${SN[k]} · ${F(s[0])}/กก.</div></div><b>${F(mat)}</b></div>
+<div class="ln"><span>ค่าวัตถุดิบ</span><span>${F(mat)}</span></div><div class="ln"><span>ค่าจัดส่ง</span><span>${fee?F(fee):'ฟรี'}</span></div><div class="ln"><span>ค่าธรรมเนียมอื่น ๆ</span><span>฿0</span></div><div class="ln t"><span>ยอดชำระรวม</span><span>${F(t)}</span></div>
+<div class="save ${sv<0?'bad':''}">${sv>0?'🎉 คุณประหยัดได้ '+F(sv):sv==0?'เท่ากับราคาฐาน':'แพงกว่าราคาฐาน '+F(-sv)}</div>
+<p class="s">ราคาฐาน: ซื้อ ${q} กก. จาก ${SN[0]} ${F(i.s[0][0])}/กก. + ค่าส่ง = ${F(base)} เทียบกับยอดใหม่ ${F(t)}</p></div>
+<div class="card"><div class="ln"><span>🚚 วันจัดส่ง</span><b>${d.getDate()}/${d.getMonth()+1} · ${s[4].replace('พรุ่งนี้ ','')}</b></div><div class="ln"><span>💳 การชำระ</span><b>${s[6]}</b></div><div class="ln"><span>↩️ ยกเลิก</span><b>ฟรีก่อน 18:00 วันนี้</b></div></div>
+<button class="btn" onclick="conf(${t},${sv})">ยืนยันสั่งซื้อ ${F(t)}</button></div>`},
+trk(){const n=S.base.n+S.ord.length,l=S.ord[0]||{n:'เนื้อไก่ 10 กก.',sup:'Supplier B',st:1};
+return hdr('MY PROCUREMENT','คำสั่งซื้อของฉัน','ติดตามสถานะและผลประหยัด')+`<div class="pad"><div class="card two"><div class="k"><small>คำสั่งซื้อเดือนนี้</small><b>${n}</b></div><div class="k"><small>ประหยัดสะสม <span class="tag">ตัวอย่าง</span></small><b style="color:var(--g)">${F(S.base.sv+S.ord.reduce((a,o)=>a+o.sv,0))}</b></div></div>
+<div class="card"><h2>สถานะคำสั่งซื้อล่าสุด</h2><b>${l.sup} · ${l.n}</b><div class="s">ยืนยันคำสั่งซื้อแล้ว · รอจัดส่ง</div>
+<div class="steps"><div class="d"><i></i>ยืนยันแล้ว</div><div><i></i>เตรียมของ</div><div><i></i>กำลังส่ง</div><div><i></i>สำเร็จ</div></div></div>
+<div class="card"><h2>รายงานต้นทุน</h2><p class="s">ราคาที่ซื้อแต่ละครั้งเทียบกับครั้งก่อน เพื่อช่วยวางแผนซื้อครั้งถัดไป</p><table><tr><th>วัตถุดิบ</th><th>ครั้งก่อน</th><th>ล่าสุด</th><th>เปลี่ยน</th></tr>${I.map(i=>{const c=(i.last[1]/i.last[0]-1)*100;return `<tr><td>${i.n}</td><td>${F(i.last[0])}</td><td>${F(i.last[1])}</td><td style="color:${c>0?'var(--o)':'var(--g)'}">${c>0?'+':''}${c.toFixed(1)}%</td></tr>`}).join('')}</table></div>
+${S.ord.length?`<div class="card"><h2>คำสั่งซื้อใหม่ในเซสชันนี้</h2>${S.ord.map(o=>`<div class="ln"><span>${o.n} · ${o.sup}</span><b>${F(o.t)}</b></div>`).join('')}</div>`:''}</div>`},
+tool(){return hdr('COST & PRICING','ต้นทุนและราคา Grab','คำนวณราคาขายที่ไม่ขาดทุน')+`<div class="pad"><div class="card"><div class="chips">${S.menus.map((m,k)=>`<button class="${S.mi==k?'on':''}" onclick="S.mi=${k};S.add=false;draw()">${m.n}</button>`).join('')}<button style="border-style:dashed;color:var(--g);font-weight:700" onclick="S.add=!S.add;draw()">${S.add?'✕ ยกเลิก':'＋ เพิ่มเมนู'}</button></div>${S.add?addForm():''}
+<div class="two"><label class="f">ค่าวัตถุดิบอื่น ๆ (฿/จาน)<input type="number" id="ot" value="${S.menus[S.mi].ot}" oninput="upT()"></label><label class="f">ค่าแพ็กเกจ (฿)<input type="number" id="pk" value="${S.menus[S.mi].pk}" oninput="upT()"></label>
+<label class="f">ค่าแรง/เช่า/ไฟ (฿/จาน)<input type="number" id="oh" value="${S.menus[S.mi].oh}" oninput="upT()"></label><label class="f">สูญเสียวัตถุดิบ (%)<input type="number" id="wst" value="${S.wst}" oninput="upT()"></label>
+<label class="f">โปรที่ร้านออกเอง (%)<input type="number" id="promo" value="${S.promo}" oninput="upT()"></label><label class="f">กำไรเป้าหมาย (%)<input type="number" id="mg" value="${S.mg}" oninput="upT()"></label></div><p class="s" style="margin:10px 0 0">🔒 ค่า GP คงที่ 30% + VAT 7% ของ GP (หักจากราคาขายบน Grab รวม 32.1%) ใช้กับทุกเมนู</p></div><div id="tb"></div></div>`}};
+function filt(v){const l=$('#list');if(!l)return;const r=I.filter(i=>i.n.includes(v.trim()));
+l.innerHTML=r.map(i=>{const k=best(i,i.q);return `<div class="it" onclick="go('cmp','${i.id}')"><div class="ic">${i.e}</div><div class="l"><b>${i.n}</b><span class="s">${i.d}</span></div><div class="r"><b>${F(i.s[k][0])}<span class="s">/กก.</span></b><span class="tag g">เทียบราคา</span></div></div>`}).join('')||'<p class="s">ไม่พบวัตถุดิบ</p>'}
+const TM=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+// วันพิเศษ (ตรวจวันที่ตามปฏิทินจันทรคติอีกครั้งก่อนใช้งานจริง) it = วัตถุดิบ:% ที่แนะนำให้เพิ่ม (ค่าสมมติ)
+const FES=[
+{n:'11.11 โปรใหญ่แอปส่งอาหาร',e:'🛍️',d:'2026-11-11',it:{ck:20,rc:15},t:'วันแคมเปญมักมีออเดอร์เดลิเวอรีพุ่ง'},
+{n:'วันลอยกระทง',e:'🏮',d:'2026-11-24',it:{ck:15,vg:25},t:'คนออกไปเที่ยวงาน สั่งอาหารกลับบ้านเพิ่ม'},
+{n:'วันพ่อแห่งชาติ',e:'👔',d:'2026-12-05',it:{ck:20,rc:15,vg:10},t:'มื้อฉลองครอบครัว ออเดอร์ชุดใหญ่เพิ่มขึ้น'},
+{n:'วันคริสต์มาส',e:'🎄',d:'2026-12-25',it:{ck:25,rc:15},t:'เทศกาลปาร์ตี้และมื้อพิเศษ'},
+{n:'เคานต์ดาวน์ปีใหม่',e:'🎆',d:'2026-12-31',it:{ck:30,rc:20,vg:20},t:'ปาร์ตี้ส่งท้ายปี ยอดสั่งสูงสุดของปี'},
+{n:'ตรุษจีน',e:'🧧',d:'2027-02-06',it:{ck:35,vg:30,rc:15},t:'ไหว้บรรพบุรุษ/มื้อฉลอง ใช้ไก่และผักเพิ่มมาก'},
+{n:'วันวาเลนไทน์',e:'💝',d:'2027-02-14',it:{ck:15,vg:10},t:'มื้อคู่รักและออเดอร์เซ็ตพิเศษ'},
+{n:'วันแม่แห่งชาติ',e:'👩',d:'2027-08-12',it:{ck:20,rc:10},t:'มื้อฉลองครอบครัว'}];
+const fD=f=>new Date(f.d+'T00:00:00'),fdt=d=>d.getDate()+' '+TM[d.getMonth()];
+const t0=()=>{const t=new Date();t.setHours(0,0,0,0);return t};
+const fdays=f=>Math.round((fD(f)-t0())/864e5);
+function festCard(){const up=FES.map((f,k)=>({f,k,n:fdays(f)})).filter(x=>x.n>=0).sort((a,b)=>a.n-b.n);if(!up.length||up[0].n>60)return'';
+const {f,k,n}=up[0],fd=fD(f),by=t0();by.setDate(by.getDate()+Math.max(0,n-4));
+const its=Object.keys(f.it).map(id=>{const i=I.find(x=>x.id==id);return `<span class="tag g" style="margin:2px 4px 2px 0">${i.n} ${i.q}→${Math.ceil(i.q*(1+f.it[id]/100))} กก. (+${f.it[id]}%)</span>`}).join('');
+return `<div class="card" style="background:linear-gradient(135deg,var(--o2),var(--card))"><div style="display:flex;gap:12px;align-items:center"><div class="ic" style="background:var(--card)">${f.e}</div><div style="flex:1"><b>${f.n}</b><div class="s">${fdt(fd)} ${fd.getFullYear()+543} · <b style="color:var(--o)">${n==0?'วันนี้':'อีก '+n+' วัน'}</b></div></div></div>
+<p class="s" style="margin:10px 0 6px">${f.t} · ควรสั่งภายใน <b>${n<=4?'วันนี้':fdt(by)}</b> <span class="tag">ประมาณการ</span></p><div>${its}</div>
+<button class="btn" style="margin-top:10px" onclick="festBuy(${k})">เตรียมสั่งเลย →</button>
+<p class="s" style="margin:8px 0 0">ตัวเลขแนะนำเป็นค่าสมมติ ปรับเองได้ในหน้าเปรียบเทียบ · ของสดไม่ควรสั่งเผื่อเกินที่ขายได้</p>
+${up.length>1?`<details style="margin-top:8px"><summary class="s" style="cursor:pointer">วันพิเศษที่กำลังจะมาถึง</summary>${up.slice(1,6).map(x=>`<div class="ln"><span>${x.f.e} ${x.f.n}</span><span class="s">${fdt(fD(x.f))} · อีก ${x.n} วัน</span></div>`).join('')}</details>`:''}</div>`}
+function festBuy(k){const f=FES[k];Object.keys(f.it).forEach(id=>{const i=I.find(x=>x.id==id);S.q[id]=Math.ceil(i.q*(1+f.it[id]/100))});go('cmp',Object.keys(f.it)[0])}
+function qty(d){const i=I.find(x=>x.id==S.item);S.q[i.id]=Math.max(1,S.q[i.id]+d);S.sel=best(i,S.q[i.id]);draw()}
+function conf(t,sv){const i=I.find(x=>x.id==S.item);S.ord.unshift({n:i.n+' '+S.q[i.id]+' กก.',sup:SN[S.sel],t:Math.round(t),sv:Math.max(0,Math.round(sv)),st:1});toast('ยืนยันคำสั่งซื้อแล้ว ✓');go('trk')}
+function upT(){const m=S.menus[S.mi],g=id=>+$('#'+id).value||0;m.ot=g('ot');m.pk=g('pk');m.oh=g('oh');S.wst=g('wst');S.promo=g('promo');S.mg=g('mg');
+let fd=0;I.forEach(i=>fd+=(m.r[i.id]||0)/1000*unit(i));fd=fd/(1-S.wst/100)+m.ot;const c=fd+m.pk+m.oh,cm=S.gp/100*1.07,den=1-S.promo/100-cm-S.mg/100;
+if(den<=.05){$('#tb').innerHTML='<div class="card" style="color:var(--o)">ค่าธรรมเนียม+โปร+กำไรเป้าหมายสูงเกินไป ลองลดบางรายการ</div>';return}
+const rec=Math.ceil(c/den/5)*5,be=Math.ceil(c/(1-S.promo/100-cm)),net=p=>p*(1-S.promo/100-cm)-c;
+const row=(l,p)=>`<tr><td>${l}</td><td>${F(p)}</td><td style="color:${net(p)<0?'var(--o)':'var(--g)'}">${F(net(p),1)}</td><td>${(net(p)/p*100).toFixed(0)}%</td></tr>`;
+$('#tb').innerHTML=`<div class="card"><div class="s">ต้นทุนวัตถุดิบ (ราคาถูกสุดจากผู้ขาย) ${F(fd,1)} · รวมทั้งหมด ${F(c,1)}/จาน</div><div class="s" style="margin-top:6px">ราคาแนะนำบน Grab</div><div class="big">${F(rec)}</div><p class="s">จุดคุ้มทุน ${F(be)} · ลูกค้าจ่ายหลังโปร ${F(rec*(1-S.promo/100))}</p>
+<table><tr><th>ราคา</th><th></th><th>กำไร/จาน</th><th>%</th></tr>${row('หน้าร้านปัจจุบัน',m.cur)}${row('แนะนำ',rec)}${row('คุ้มทุน',be)}</table>
+<p class="s" style="margin-top:8px">กำไรหักโปร ค่า GP 30% และ VAT 7% ของ GP แล้ว · ราคา Grab คือราคาที่ตั้งในแอป</p></div>`}
+function addForm(){return `<div style="background:var(--g2);border-radius:14px;padding:12px;margin-bottom:10px"><b>เพิ่มเมนูใหม่</b><div class="two" style="margin-top:8px"><label class="f" style="grid-column:1/3">ชื่อเมนู<input id="n_n" placeholder="เช่น ข้าวผัดไก่"></label><label class="f">เนื้อไก่ (กรัม/จาน)<input type="number" id="n_ck" value="100"></label><label class="f">ข้าวสาร (กรัม/จาน)<input type="number" id="n_rc" value="200"></label><label class="f">ผักสด (กรัม/จาน)<input type="number" id="n_vg" value="30"></label><label class="f">ราคาหน้าร้าน (฿)<input type="number" id="n_cur" value="60"></label></div><button class="btn" style="margin-top:10px" onclick="addMenu()">บันทึกเมนู</button></div>`}
+function addMenu(){const g=id=>+$('#'+id).value||0,n=$('#n_n').value.replace(/[<>&"]/g,'').trim();if(!n){toast('กรุณาใส่ชื่อเมนู');return}S.menus.push({n,r:{ck:g('n_ck'),rc:g('n_rc'),vg:g('n_vg')},ot:8,pk:7,oh:14,cur:g('n_cur')});S.mi=S.menus.length-1;S.add=false;toast('เพิ่มเมนูแล้ว ✓');draw()}
+draw();
+</script>
+</body>
+</html>
